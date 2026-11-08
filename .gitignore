@@ -1,0 +1,13 @@
+# virtual environment
+.venv/
+venv/
+
+# secrets (never commit API keys)
+.env
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
