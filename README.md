@@ -161,7 +161,18 @@ Shortcut: after step 3, `python run_project.py` runs steps 4 to 12 together.
 - Simple text patterns may miss unusual private details, and TF-IDF only matches exact words.
 - No real money moves; refunds are only written to a log file.
 
-**What I learned:** 
-- Clean data comes first.
-- Models must never see the answer during training. 
-- AI tools need safety checks, validation and a human fallback.
+### What I learned
+
+This was my first AI/ML project. Here is what I learned from each part:
+
+- **Clean data comes first.** Real data has many small problems, like the same city written five ways, missing ages, or the same order saved twice. If I don't fix these first, every later result is wrong. I also learned to write down every cleaning rule and count how many rows it changed.
+- **SQL and pandas can answer the same question.** Running a query both ways and getting the same total gave me confidence my work was correct.
+- **Machine learning can find groups by itself.** K-means grouped customers without being told the answer, and the groups made business sense (Premium, Loyal, Occasional, Lapsing).
+- **A model must never see the answer while learning.** I only used data from before September to predict September. Otherwise the model looks perfect in testing but fails in real life.
+- **Accuracy is not enough.** A lazy model that always says "won't leave" got 61.6% accuracy but caught nobody. Precision, recall and F1 told me much more.
+- **AI needs safety checks.** Before calling the model, I blocked empty or very long tickets and hid emails and phone numbers. After the model answered, I checked the answer and sent unclear ones to a human.
+- **RAG stops the AI from making things up.** First find the right policy text, then answer only from it. If nothing matches, the assistant should say "I could not find it" instead of guessing.
+- **An agent is a loop with limits.** The agent decides a step, uses a tool, checks the result and repeats. Limits on steps, tokens and time, plus a human fallback, keep it safe.
+- **Good habits matter.** Virtual environments, small functions, testing with `assert`, fixed random seeds and Git made my project easy to run again and share.
+
+I still have a lot to learn, especially about real language models and improving model accuracy, but this project gave me a strong base to build on.
